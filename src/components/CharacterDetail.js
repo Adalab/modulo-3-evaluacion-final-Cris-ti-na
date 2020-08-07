@@ -15,7 +15,7 @@ const CharacterDetail = props => {
                         <img className="card__img" src={props.imageUrl} alt={props.name} />
                         <ul className="ml-1 mt-1">
                             <li>Especie: {props.specie}</li>
-                            <li>Origen: {props.origin.name}</li>
+                            <li>Origen: {props.origin}</li>
                             <li>Episodios: {props.episode.length}</li>
                             <li>Estado: {props.status}</li>
                         </ul>
