@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Filters from './Filters';
 import CharacterList from './CharacterList';
-//import CharacterDetail from './CharacterDetail';
+import CharacterDetail from './CharacterDetail';
 import getApiData from '../services/api';
 
 
@@ -14,9 +14,8 @@ const App = () => {
       });
   }, []);
 
-/*
   const renderCharacterDetail = () => {
-    const character = character[1];
+    const character = characters[1];
     console.log(character);
     if (character) {
       return (
@@ -29,7 +28,6 @@ const App = () => {
       );
     }
   };
-*/
 
   //render() {
     return (
@@ -37,13 +35,11 @@ const App = () => {
         <h1 className="titile--big">Rick and Morty</h1>
         <Filters />
         <CharacterList characters={characters} />
+        {renderCharacterDetail()}
       </div>
     );
   //}
 };
 
-/*
-{renderCharacterDetail()}
-*/
 
 export default App;
