@@ -16,7 +16,7 @@ const CharacterDetail = props => {
                         <ul className="ml-1 mt-1">
                             <li>Especie: {props.specie}</li>
                             <li>Origen: {props.origin.name}</li>
-                            <li>Episodios: {props.episode}</li>
+                            <li>Episodios: {props.episode.length}</li>
                             <li>Estado: {props.status}</li>
                         </ul>
                     </section>
