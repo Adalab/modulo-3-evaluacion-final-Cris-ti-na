@@ -15,7 +15,7 @@ Especie
 2. Filtrado de personajes
 La segunda parte consiste en poder buscarlos por nombre. Para eso, añadimos un input a la interfaz, de forma que al ir escribiendo un nombre queden en la interfaz solo los personajes cuyo nombre contiene las letras escritas.
 
-3 Componentes del listado de personajes
+3. Componentes del listado de personajes
 El listado debe tener los siguientes componentes como mínimo:
 Componente para los filtros
 Componente para el listado
@@ -26,8 +26,7 @@ Componente para el detalle de cada personaje
 Vamos a implementar una nueva funcionalidad: al hacer clic sobre la tarjeta de un personaje, su información aparecerá a pantalla completa. Para hacer esto usaremos rutas y React router. En la pantalla de detalle aparecerá además de la foto, nombre y especie, el planeta de origen, el número de episodios en los que aparece y si está vivo o muerto.
 
 5. Detallitos de calidad
-Como nos gusta cuidar la semántica, el campo de texto debe estar recubierto por una etiqueta <form
-/>.
+Como nos gusta cuidar la semántica, el campo de texto debe estar recubierto por una etiqueta <form />.
 Si estando en el campo de filtrado pulsamos intro debéis impedir que el navegador navegue o cambie
 la ruta sin querer.
 Si se busca por un texto por ejemplo "XXX" y no hay ningún personaje que coincida con dicho texto se
@@ -51,4 +50,4 @@ Y en el caso de que el usuario navegue a una URL inexistente como por ejemplo ht
 Un extra interesante sería que ordenáseis el listado de personajes alfabéticamente por nombre.
 
 
-Wubba Lubba Dub Dub!!
+### Wubba Lubba Dub Dub!!
