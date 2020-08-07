@@ -34,7 +34,7 @@ const App = () => {
   //render() {
     return (
       <div>
-        <h1 className="titile--big">Rick and Morty</h1>
+        <h1 className="titile--big">Rick y Morty</h1>
         <Filters />
         <CharacterList characters={characters} />
       </div>

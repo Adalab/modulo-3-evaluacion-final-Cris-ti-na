@@ -4,8 +4,8 @@ const CharacterCard = props => {
     return (
         <article className="card">
             <img src={props.imgUrl} className="card__img" alt={props.name} />
-            {props.name}
-            {props.specie}
+            <h1>{props.name}</h1>
+            <p>{props.specie}</p>
         </article>
     )
 }
