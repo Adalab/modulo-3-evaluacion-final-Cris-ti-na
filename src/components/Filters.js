@@ -32,7 +32,12 @@ const Filters = (props) => {
                 <label htmlFor="filterSpecie" className="form__label">
                     Filter by specie
                 </label>
-                <select id="filterSpecie" className="form__input-text" onChange={handlefilterSpecie}>
+                <select
+                    id="filterSpecie"
+                    value={props.filterSpecie}
+                    className="form__input-text"
+                    onChange={handlefilterSpecie}
+                >
                     <option value="Alien">Alien</option>
                     <option value="Animal">Animal</option>
                     <option value="Human">Human</option>

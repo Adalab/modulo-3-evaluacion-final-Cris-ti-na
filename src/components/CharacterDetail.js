@@ -2,10 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const CharacterDetail = props => {
+    const handleModalContentClick = ev => {
+        ev.preventDefault();
+    };
     return (
         <div className="modal">
             <div className="modal__dialog">
-                <div className="modal__content">
+                <div className="modal__content" onClick={handleModalContentClick}>
                     <header className="modal__header">
                         <h2 className="modal__title">Character: {props.name}</h2>
                         <Link to="/">
