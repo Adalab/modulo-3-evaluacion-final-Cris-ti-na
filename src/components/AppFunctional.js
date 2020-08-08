@@ -9,12 +9,24 @@ import logo from '../images/rmlogo.png';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
+  const [filterName, setFilterName] = useState('');
+  const [filterSpecie, setFilterSpecie] = useState('');
 
   useEffect(() => {
       getApiData().then(data => {
         setCharacters(data);
       });
   }, []);
+
+  const handleFilters = (data) => {
+    console.log(data);
+    if (data.key === 'filterName') {
+      setFilterName(data.value);
+    } else if (data.key === 'filterSpecie') {
+      setFilterSpecie(data.value);
+    }
+
+  }
 
   const renderCharacterDetail = (props) => {
     //const character = characters[0];
@@ -39,6 +51,12 @@ const App = () => {
     }
   };
 
+  const renderFilteredCharacters = () => {
+    return characters.filter(character => {
+      return character.name.includes(filterName);
+    });
+  }
+
   //render() {
     return (
       <div>
@@ -51,8 +69,8 @@ const App = () => {
 
         <main className="App">
           <h1 className="title--big">Rick and Morty</h1>
-          <Filters />
-          <CharacterList characters={characters} />
+          <Filters filterName={filterName} handleFilters={handleFilters} />
+          <CharacterList characters={renderFilteredCharacters()} />
           <Switch>
             <Route path="/details/:characterName" render={renderCharacterDetail} />
           </Switch>
