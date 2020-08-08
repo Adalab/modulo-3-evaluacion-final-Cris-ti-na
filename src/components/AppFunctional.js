@@ -3,7 +3,6 @@ import { Route, Switch} from 'react-router-dom';
 import Filters from './Filters';
 import CharacterList from './CharacterList';
 import CharacterDetail from './CharacterDetail';
-//import CharacterCard from './CharacterCard';
 import getApiData from '../services/api';
 import logo from '../images/rmlogo.png';
 
@@ -25,15 +24,14 @@ const App = () => {
     } else if (data.key === 'filterSpecie') {
       setFilterSpecie(data.value);
     }
-
-  }
+  };
 
   const renderCharacterDetail = (props) => {
     //const character = characters[0];
     const routeCharacterName = props.match.params.characterName;
     const character = characters.find(character =>
       character.name === routeCharacterName);
-    console.log(character);
+    //console.log(character);
     if (character) {
       return (
         <CharacterDetail
@@ -52,9 +50,13 @@ const App = () => {
   };
 
   const renderFilteredCharacters = () => {
-    return characters.filter(character => {
-      return character.name.includes(filterName);
-    });
+    return characters
+      .filter(character => {
+        return character.name.includes(filterName);
+      })
+      .filter(character => {
+        return character.species.includes(filterSpecie);
+      });
   }
 
   //render() {
@@ -69,7 +71,11 @@ const App = () => {
 
         <main className="App">
           <h1 className="title--big">Rick and Morty</h1>
-          <Filters filterName={filterName} handleFilters={handleFilters} />
+          <Filters
+            filterName={filterName}
+            filterSpecie={filterSpecie}
+            handleFilters={handleFilters}
+          />
           <CharacterList characters={renderFilteredCharacters()} />
           <Switch>
             <Route path="/details/:characterName" render={renderCharacterDetail} />
