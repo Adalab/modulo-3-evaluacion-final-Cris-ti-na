@@ -1,17 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
-import './stylesheets/index.css';
+import './stylesheets/index.scss';
 import App from './components/AppFunctional.js';
-
-/*
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-*/
 
 ReactDOM.render(
   <HashRouter>

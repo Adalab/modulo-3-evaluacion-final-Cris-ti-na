@@ -6,12 +6,6 @@ const getDataFromApi = () => {
         //console.log(data.results);
         const results = data.results;
         return results;
-
-        //const results = data.results.map((result, index) => {
-        //    result.id = 'id' + index;
-        //    return result;
-        //});
-        //return results;
     });
 }
 

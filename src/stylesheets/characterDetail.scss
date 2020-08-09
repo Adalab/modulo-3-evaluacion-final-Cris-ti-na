@@ -1,0 +1,138 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $color-modal;
+
+    &__dialog {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__content {
+        padding: 15px;
+        border-radius: 10px;
+        background-color: $color-white;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid $color-primary;
+        color: $color-complementary;
+    }
+}
+
+.cardD {
+    display: flex;
+    justify-content: flex-start;
+    height: 320px;
+    width: 200px;
+    cursor: auto;
+
+    &:hover{
+        box-shadow: none;
+    }
+
+    &__text {
+        color: $color-text;
+        margin: auto;
+        display: flex;
+        align-items: inherit;
+        text-align: center;
+        flex-direction: column;
+        list-style: none;
+        padding: 10px;
+
+        &-bold {
+            font-weight: bold;
+        }
+    }
+}
+
+.cardDetail {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.icon {
+    background-color: $color-primary;
+    padding: 4px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    color: $color-white;
+}
+
+/*
+.icon {
+&--exit {
+    position: absolute;
+    color: #36B0C7;
+    border: black solid;
+    background: black;
+    border-radius: 50%;
+    font-size: 20px;
+
+    &:hover {
+    font-size: 22px;
+    transition: ease 1.5s;
+    }
+}
+    &--heart{
+    color: rgb(255, 0, 191);
+    background: black;
+    border-radius: 20%;
+    border-radius: 0 20% 20% 0;
+    padding-right: 3px;
+    border: black solid;
+    }
+
+    &--human{
+    border: black solid;
+    color: rgb(251, 217, 26);
+    background: black;
+    border-radius: 20% 0 0 20%;
+    }
+
+    &--alien{
+    border: black solid;
+    color: rgb(0, 255, 13);
+    background: black;
+    border-radius: 20% 0 0 20%;
+    }
+
+    &--dead {
+    border: black solid;
+    color: rgb(132, 0, 255);
+    background: black;
+    border: black solid;
+    border-radius: 20%;
+    border-radius: 0 20% 20% 0;
+    padding-right: 3px;
+    }
+}
+
+.btn{
+display: flex;
+justify-content: flex-end;
+width: 190px ;
+margin-top: 10px;
+}
+
+.icons{
+display: flex;
+justify-content: center;
+font-size: 26px;
+}
+*/

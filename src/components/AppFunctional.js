@@ -5,11 +5,12 @@ import CharacterList from './CharacterList';
 import CharacterDetail from './CharacterDetail';
 import getApiData from '../services/api';
 import logo from '../images/rmlogo.png';
+import errorGif from '../images/errorGif.gif';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [filterName, setFilterName] = useState('');
-  const [filterSpecie, setFilterSpecie] = useState('all');
+  const [filterSpecie, setFilterSpecie] = useState('All');
 
   useEffect(() => {
       getApiData().then(data => {
@@ -27,6 +28,7 @@ const App = () => {
     characters.sort((a, b) => (a.name > b.name) ? 1 : -1);
   }
 
+  //FILTERS
   const handleFilters = (data) => {
     //console.log(data);
     if (data.key === 'filterName') {
@@ -36,15 +38,20 @@ const App = () => {
     }
   };
 
+  //RENDER
   const renderCharacterDetail = (props) => {
     const routeCharacterName = props.match.params.characterName;
     const character = characters.find(
       character => character.name === routeCharacterName);
 
-      //const character = characters[0];
-      //console.log(character);
-
-    if(character) {
+    if(character === undefined) {
+      return (
+        <div>
+          <p>error</p>
+          {errorInfo}
+        </div>
+      );
+    } else {
       return (
         <CharacterDetail
           key={character.id}
@@ -55,12 +62,6 @@ const App = () => {
           episode={character.episode}
           status={character.status}
         />
-      );
-    } else {
-      return (
-        <div>
-          {errorInfo}
-        </div>
       );
     }
   }
@@ -73,7 +74,7 @@ const App = () => {
         return name.includes(filterName.toLocaleLowerCase());
       })
       .filter(character => {
-        if (filterSpecie === 'all') {
+        if (filterSpecie === 'All') {
           return true;
         } else {
           return character.species === filterSpecie;
@@ -83,46 +84,46 @@ const App = () => {
 
   //ERROR
   const errorInfo = (
-    <div>
-      <h4 className="errorText">
-        Character not found with <span className="errorText_word">"{filterName}"</span>
-        Go back to
+    <div className="error">
+      <h1 className="errorText">
+        404 Character Not Found
+      </h1>
+
+      <img src={errorGif} alt="Error gif" />
+
+      <h1 className="errorText back__btn">
           <Link to="/">
-            <span>main page</span>
+            <span>HOME</span>
           </Link>{' '}
-      </h4>
-      <div></div>
+      </h1>
     </div>
   )
 
-  //render() {
+  //RENDER
   return (
     <div>
-
       <header>
-        <div className="header__logo-container">
-          <img src={logo} className="header__logo" alt='Rick and Morty logo' />
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt='Rick and Morty logo' />
         </div>
       </header>
-
-      <main className="App">
-        <h1 className="title--big">Rick and Morty</h1>
-        <Filters
-          filterName={filterName}
-          filterSpecie={filterSpecie}
-          handleFilters={handleFilters}
-        />
-        <CharacterList
-          characters={renderFilteredCharacters()}
-          errorInfo={errorInfo} />
-        <Switch>
-          <Route path="/details/:characterName" render={renderCharacterDetail} />
-        </Switch>
-      </main>
-
+      <Switch>
+        <Route exact path="/">
+          <main>
+            <Filters
+              filterName={filterName}
+              filterSpecie={filterSpecie}
+              handleFilters={handleFilters}
+            />
+            <CharacterList
+              characters={renderFilteredCharacters()}
+              errorInfo={errorInfo} />
+            </main>
+        </Route>
+        <Route exact path="/details/:characterName" render={renderCharacterDetail} />
+      </Switch>
     </div>
   );
-  //}
 };
 
 export default App;
