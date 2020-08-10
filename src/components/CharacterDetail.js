@@ -1,5 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import human from '../images/Morty Human.png';
+import alien from '../images/Morty Alien.png';
+import dead from '../images/Morty Dead.png';
+
+const aliveoptions = props => {return (props.specie === 'Human' ? human : alien)};
 
 const CharacterDetail = props => {
     const handleModalContentClick = ev => {
@@ -22,12 +27,6 @@ const CharacterDetail = props => {
                                 <ul className="card__specie cardD__text">
                                     <li>
                                         <span className="cardD__text-bold">
-                                            Specie:
-                                        </span>
-                                        {` ${props.specie}`}
-                                    </li>
-                                    <li>
-                                        <span className="cardD__text-bold">
                                             Origin:
                                         </span>
                                         {` ${props.origin}`}
@@ -40,9 +39,11 @@ const CharacterDetail = props => {
                                     </li>
                                     <li>
                                         <span className="cardD__text-bold">
-                                            Status:
+                                            Specie/Status:
                                         </span>
-                                        {` ${props.status}`}
+                                        <div>
+                                            <img src={props.status === 'Alive' ? aliveoptions : dead } className="card__specie-icon" alt="{props.specie === 'Alive' ? 'Alive' : 'Dead'}" />
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -53,5 +54,14 @@ const CharacterDetail = props => {
         </div>
     )
 };
+
+/*
+    <li>
+        <span className="cardD__text-bold">
+            Specie:
+        </span>
+        {` ${props.specie}`}
+    </li>
+*/
 
 export default CharacterDetail;

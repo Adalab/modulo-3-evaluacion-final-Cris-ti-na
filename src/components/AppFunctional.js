@@ -5,7 +5,7 @@ import CharacterList from './CharacterList';
 import CharacterDetail from './CharacterDetail';
 import getApiData from '../services/api';
 import logo from '../images/rmlogo.png';
-import errorGif from '../images/errorGif.gif';
+import errorGif from '../images/errorGif2.gif';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);

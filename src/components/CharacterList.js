@@ -1,7 +1,6 @@
 import React from 'react';
 import CharacterCard from './CharacterCard';
-import errorGif from '../images/errorGif.gif';
-import { Link } from 'react-router-dom';
+import errorGif from '../images/errorGif2.gif';
 
 const CharacterList = props => {
     const errorInfo = (
