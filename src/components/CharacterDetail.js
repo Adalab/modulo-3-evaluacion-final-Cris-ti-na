@@ -4,12 +4,11 @@ import human from '../images/Morty Human.png';
 import alien from '../images/Morty Alien.png';
 import dead from '../images/Morty Dead.png';
 
-const aliveoptions = props => {return (props.specie === 'Human' ? human : alien)};
-
 const CharacterDetail = props => {
     const handleModalContentClick = ev => {
         ev.preventDefault();
     };
+
     return (
         <div className="modal">
             <div className="modal__dialog">
@@ -38,11 +37,11 @@ const CharacterDetail = props => {
                                         {` ${props.episode.length}`}
                                     </li>
                                     <li>
-                                        <span className="cardD__text-bold">
-                                            Specie/Status:
-                                        </span>
                                         <div>
-                                            <img src={props.status === 'Alive' ? aliveoptions : dead } className="card__specie-icon" alt="{props.specie === 'Alive' ? 'Alive' : 'Dead'}" />
+                                            {props.status === 'Alive' ?
+                                                <img src={props.specie === 'Human' ? human : alien } className="card__specie-icon" alt="{props.specie === 'Human' ? 'alive human' : 'alive alien'}" /> :
+                                                <img src={dead} className="card__specie-icon" alt='dead' />
+                                            }
                                         </div>
                                     </li>
                                 </ul>
@@ -56,6 +55,9 @@ const CharacterDetail = props => {
 };
 
 /*
+                                        <span className="cardD__text-bold">
+                                            Specie/Status:
+                                        </span>
     <li>
         <span className="cardD__text-bold">
             Specie:
