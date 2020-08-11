@@ -13,6 +13,12 @@ const Filters = (props) => {
             value: ev.target.value
         });
     };
+    const handleFilterGender = (ev) => {
+        props.handleFilters({
+            key: 'filterGender',
+            checked: ev.target.checked
+        });
+    };
     const handleSubmit = (ev) => {
         ev.preventDefault ();
     };
@@ -46,6 +52,18 @@ const Filters = (props) => {
                     <option value="Alien">Alien</option>
                     <option value="Human">Human</option>
                 </select>
+            </div>
+            <div className="form__container">
+                <label htmlFor="filterGender" className="form__label">
+                    Female character
+                </label>
+                <input
+                    type="checkbox"
+                    className="form__input"
+                    id="filterGender"
+                    checked={props.filterGender}
+                    onChange={handleFilterGender}
+                />
             </div>
         </form>
     )

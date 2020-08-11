@@ -11,6 +11,7 @@ const App = () => {
   const [characters, setCharacters] = useState([]);
   const [filterName, setFilterName] = useState('');
   const [filterSpecie, setFilterSpecie] = useState('All');
+  const [filterGender, setFilterGender] = useState(false);
 
   useEffect(() => {
       getApiData().then(data => {
@@ -35,7 +36,9 @@ const App = () => {
       setFilterName(data.value);
     } else if (data.key === 'filterSpecie') {
       setFilterSpecie(data.value);
-    }
+    } else if (data.key === 'filterGender') {
+      setFilterGender(data.value);
+    };
   };
 
   //RENDER
@@ -61,6 +64,7 @@ const App = () => {
           origin={character.origin.name}
           episode={character.episode}
           status={character.status}
+          gender={character.gender}
         />
       );
     }
@@ -71,13 +75,20 @@ const App = () => {
     return characters
       .filter(character => {
         const name = character.name.toLowerCase();
-        return name.includes(filterName.toLocaleLowerCase());
+        return name.includes(filterName.toLowerCase());
       })
       .filter(character => {
         if (filterSpecie === 'All') {
           return true;
         } else {
           return character.species === filterSpecie;
+        }
+      })
+      .filter(character => {
+        if (filterGender === false) {
+          return true;
+        } else {
+          return character.gender === 'Female';
         }
       });
   }
@@ -113,6 +124,7 @@ const App = () => {
             <Filters
               filterName={filterName}
               filterSpecie={filterSpecie}
+              filterGender={filterGender}
               handleFilters={handleFilters}
             />
             <CharacterList
